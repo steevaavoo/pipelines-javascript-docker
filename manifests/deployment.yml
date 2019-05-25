@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: steevaavoopipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: steevaavoopipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: steevaavoopipelinesjavascriptdocker 
+          image: steevaavooacr01.azurecr.io/steevaavoopipelinesjavascriptdocker 
+          ports:
+          - containerPort: 8080

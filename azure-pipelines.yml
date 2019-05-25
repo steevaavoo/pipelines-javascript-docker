@@ -8,6 +8,7 @@ trigger:
     include:
     - master
 
+# A pull request will not trigger a build
 pr: none
 
 resources:

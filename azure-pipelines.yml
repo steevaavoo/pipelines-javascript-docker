@@ -5,6 +5,8 @@
 trigger:
 - master
 
+pr: none
+
 resources:
 - repo: self
 
@@ -16,7 +18,7 @@ variables:
   containerRegistry: 'steevaavooacr01.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  
+
   # Kubernetes Namespace
   k8sNamespace: 'default'
   imagePullSecret: 'steevaavooacr019d52-auth'
@@ -27,7 +29,7 @@ variables:
 stages:
 - stage: Build
   displayName: Build stage
-  jobs:  
+  jobs:
   - job: Build
     displayName: Build job
     pool:
@@ -42,7 +44,7 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-          
+
     - task: PublishPipelineArtifact@0
       inputs:
         artifactName: 'manifests'
@@ -73,7 +75,7 @@ stages:
               secretName: $(imagePullSecret)
               namespace: $(k8sNamespace)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-              
+
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:

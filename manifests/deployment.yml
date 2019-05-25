@@ -13,4 +13,4 @@ spec:
         - name: steevaavoopipelinesjavascriptdocker 
           image: steevaavooacr01.azurecr.io/steevaavoopipelinesjavascriptdocker 
           ports:
-          - containerPort: 8080
+          - containerPort: 8081
